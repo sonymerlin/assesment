@@ -1,0 +1,14 @@
+Query for identifying rows with duplicate values in a specific column.
+
+SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name HAVING COUNT(*) > 1;
+
+
+
+Query for identifying rows with duplicate values in a two column with DISTINCT
+
+SELECT DISTINCT column1, column2 FROM table_name WHERE (column1, column2) IN (
+    SELECT column1, column2
+    FROM table_name
+    GROUP BY column1, column2
+    HAVING COUNT(*) > 1
+);

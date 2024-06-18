@@ -1,0 +1,7 @@
+SELECT clothing.name AS clothes, color.name AS color, customer.last_name, customer.first_name
+FROM clothing_order
+JOIN clothing ON clothing_order.clothing_id = clothing.id
+JOIN customer ON clothing_order.customer_id = customer.id
+JOIN color ON clothing.color_id = color.id
+WHERE clothing.color_id = customer.favorite_color_id
+ORDER BY color.name ASC;
